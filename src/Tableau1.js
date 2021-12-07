@@ -44,7 +44,7 @@ class Tableau1 extends Phaser.Scene{
 
 
         //--------------background 2 (tout au fond et flou)--------------------
-        this.colline=this.add.image(-20,-50, 'colline').setOrigin(0,0);
+        this.colline=this.add.image(0,-50, 'colline').setOrigin(0,0);
         this.colline.scale = 0.5
         //--------------background 1 (gris) --------------------
 
