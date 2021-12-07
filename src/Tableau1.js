@@ -4,7 +4,7 @@
  */
 class Tableau1 extends Phaser.Scene{
     /**
-     * Précharge les assets
+     * Précharge les assets olalamamamihamatata
      */
     preload(){
         //Arrière plan
