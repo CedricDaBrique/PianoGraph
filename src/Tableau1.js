@@ -1,18 +1,21 @@
 /**
- * ALGO: ceci est une classe...
- * Vous verrez ça plus tard en détail avec Rémi, pour l'instant on n'a pas trop besoin de savoir à quoi ça sert.
+ *
+ *
  */
 class Tableau1 extends Phaser.Scene{
     /**
      * Précharge les assets olalamamamihamatata
      */
     preload(){
-        //Arrière plan
+        //dp plan
         this.load.image('nuage', 'assets/level/assets/nuage.png');
+        this.load.image('mount1', 'assets/level/assets/mountain-1.png');
+        this.load.image('mount2', 'assets/level/assets/mountain-2.png');
 
 
-        //bg 1 (gris légèrement flou)
+        //second plan)
         this.load.image('colline', 'assets/level/assets/background.png');
+        this.load.image('grass', 'assets/level/assets/grass.png');
 
 
         // premier plan
@@ -20,22 +23,16 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('sol', 'assets/level/assets/ground.png');
         this.load.image('bosse', 'assets/level/assets/groundboss.png');
 
-        //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
-        // ALGO : ceci est une boucle
 
 
-        //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
-
-
-        //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
 
 
     }
 
     /**
-     * Crée la scène
-     * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
-     * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
+     *
+     *
+     *
      */
     create() {
 
@@ -43,10 +40,23 @@ class Tableau1 extends Phaser.Scene{
         this.nuage = this.add.sprite(0, 0, 'nuage').setOrigin(0, 0);
 
 
-        //--------------background 2 (tout au fond et flou)--------------------
+        //----------------------------------
+        this.mount1=this.add.image(-250,-80, 'mount1').setOrigin(0,0);
+        this.mount1.scale = 0.5
+        this.mount2=this.add.image(300,-50, 'mount2').setOrigin(0,0);
+        this.mount2.scale = 0.5
+
+
+
+
+
+        this.grasss=this.add.image(-45,100, 'grass').setOrigin(0,0);
+        this.grasss.scale = 0.6
+
         this.colline=this.add.image(0,-50, 'colline').setOrigin(0,0);
         this.colline.scale = 0.5
-        //--------------background 1 (gris) --------------------
+
+        //-------------- --------------------
 
 
         //-------------ground premier plan---------------------------
