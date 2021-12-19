@@ -29,34 +29,34 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-        for(let i=1;i<=5;i++){
+        for(let i=1;i<=4;i++){
             this.load.image('vulture'+i, 'assets/level/characters/vulture/idle-'+ i + '.png');
         }
-        for(let i=1;i<=4;i++){
+        for(let i=1;i<=3;i++){
             this.load.image('male'+i, 'assets/level/characters/c2/humain/male/h-'+ i + '.png');
         }
-        for(let i=1;i<=4;i++) {
+        for(let i=1;i<=3;i++) {
             this.load.image('female' + i, 'assets/level/characters/c2/humain/female2/f-' + i + '.png');
         }
-        for(let i=1;i<=4;i++) {
+        for(let i=1;i<=3;i++) {
             this.load.image('sun' + i, 'assets/level/characters/sun/sun-' + i + '.png');
         }
-        for(let i=1;i<=4;i++) {
+        for(let i=1;i<=3;i++) {
             this.load.image('rain' + i, 'assets/level/characters/rain/rain-' + i + '.png');
         }
-        for(let i=1;i<=5;i++) {
+        for(let i=1;i<=4;i++) {
             this.load.image('snake' + i, 'assets/level/characters/snake/snake-' + i + '.png');
         }
-        for(let i=1;i<=7;i++) {
+        for(let i=1;i<=6;i++) {
             this.load.image('bird' + i, 'assets/level/characters/oiseau/ow-' + i + '.png');
         }
-        for(let i=1;i<=7;i++) {
+        for(let i=1;i<=6;i++) {
             this.load.image('fox' + i, 'assets/level/characters/fox/foxwalk/fw-' + i + '.png');
         }
-        for(let i=1;i<=9;i++) {
+        for(let i=1;i<=8;i++) {
             this.load.image('apple' + i, 'assets/level/apple/fall-' + i + '.png');
         }
-        for(let i=1;i<=11;i++) {
+        for(let i=1;i<=10;i++) {
             this.load.image('deer' + i, 'assets/level/characters/deer/deer-' + i + '.png');
         }
 
@@ -354,16 +354,18 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-        this.deer = this.add.sprite(-500, -200, 'deer').setOrigin(0,0);
+        this.deer = this.add.sprite(-500, -200, 'deer1').setOrigin(0,0);
         this.anims.create({
             key: 'deer',
             frames: this.getFrames('deer', 10),
             frameRate: 7,
             repeat: -1
         });
-        this.deer.setVisible(false)
-        this.deer.scale = 1
         this.deer.play('deer');
+        this.deer.scale = 1
+        this.deer.visible=false
+
+
 
 
 
@@ -385,8 +387,8 @@ class Tableau1 extends Phaser.Scene{
         {
             switch (kevent.keyCode)
             {
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=2;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    me.deer.visible=true
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
                     me.speed=-2;
