@@ -108,6 +108,20 @@ class Tableau1 extends Phaser.Scene{
         let sol2=this.add.image(-800,0, 'sol').setOrigin(0,0);
 
 
+       //Placement du renard pour qu'il soit derrière l'arbre
+        this.fox = this.add.sprite(500, 100, 'fox').setOrigin(0,0);
+        this.anims.create({
+            key: 'fox',
+            frames: this.getFrames('fox', 6),
+            frameRate: 5,
+            repeat: -1
+        });
+        this.fox.setVisible(false)
+        this.fox.play('fox');
+        this.fox.scale = 0.5
+
+
+
         //Arbres qui seront attribués aux touches
         this.tree1=this.add.image(-80,80, 'tree').setOrigin(0,0);
         this.tree1.scale = 0.3
@@ -136,6 +150,8 @@ class Tableau1 extends Phaser.Scene{
             frames: this.getFrames('bird', 6),
             frameRate: 3,
             repeat: 1
+
+
         });
         this.bird.setVisible(false)
         this.bird.scale = 0.7
@@ -205,21 +221,6 @@ class Tableau1 extends Phaser.Scene{
         });
 
 
-
-        this.fox = this.add.sprite(500, 100, 'fox').setOrigin(0,0);
-        this.anims.create({
-            key: 'fox',
-            frames: this.getFrames('fox', 6),
-            frameRate: 5,
-            repeat: -1
-        });
-        this.fox.setVisible(false)
-        this.fox.play('fox');
-        this.fox.scale = 0.5
-
-
-
-
         this.apple = this.add.sprite(300, 200, 'apple').setOrigin(0,0);
         this.anims.create({
             key: 'apple',
@@ -232,8 +233,6 @@ class Tableau1 extends Phaser.Scene{
         this.apple.scale = 0.2
 
 
-
-
         this.deer = this.add.sprite(-500, -200, 'deer1').setOrigin(0,0);
         this.anims.create({
             key: 'deer',
@@ -244,8 +243,6 @@ class Tableau1 extends Phaser.Scene{
         this.deer.play('deer');
         this.deer.scale = 1
         this.deer.visible=false
-
-
 
 
         this.female = this.add.sprite(-380, 50, 'female').setOrigin(0,0);
@@ -279,8 +276,6 @@ class Tableau1 extends Phaser.Scene{
         this.rain.setVisible(false)
         this.rain.scale = 0.7
         this.rain.play('rain');
-
-
 
         this.vulture = this.add.sprite(-40, -50, 'vulture').setOrigin(0,0);
         this.anims.create({
@@ -372,26 +367,17 @@ class Tableau1 extends Phaser.Scene{
                     me.deer.visible=true
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.L:
-                    me.bird.visible=true
+                    me.fox.visible=true
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.M:
-                    me.fox.visible=true
+                    me.bird.visible=true
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.W:
                     me.sun.visible=false
                     break;
             }
         });
-            this.input.keyboard.on('keyup', function(kevent)
-            {
-                switch (kevent.keyCode)
-                {
-                    case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                        me.speed=0;
-                        break;
-                }
-            });
+
         }
 
      update(){
