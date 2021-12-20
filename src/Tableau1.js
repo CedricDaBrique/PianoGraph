@@ -28,7 +28,7 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-
+      // On charge les animations
         for(let i=1;i<=4;i++){
             this.load.image('vulture'+i, 'assets/level/characters/vulture/idle-'+ i + '.png');
         }
@@ -64,7 +64,6 @@ class Tableau1 extends Phaser.Scene{
 
 
     }
-
     /**
      *
      *
@@ -79,9 +78,6 @@ class Tableau1 extends Phaser.Scene{
         this.grey.setVisible(false)
         this.sun = this.add.sprite(0, -200, 'sun').setOrigin(0,0);
 
-
-
-
         this.anims.create({
             key: 'sun',
             frames: this.getFrames('sun', 3),
@@ -92,10 +88,7 @@ class Tableau1 extends Phaser.Scene{
         this.sun.play('sun');
         this.sun.scale = 0.5
 
-
-
-
-        // Dernier plan
+        //Montagne
         this.mount1=this.add.image(-250,-80, 'mount1').setOrigin(0,0);
         this.mount1.scale = 0.5
         this.mount2=this.add.image(300,-50, 'mount2').setOrigin(0,0);
@@ -106,36 +99,16 @@ class Tableau1 extends Phaser.Scene{
 
 
         //Second plan
-
-
-
-
-
-
-
-
         this.grasss=this.add.image(0,-140, 'grass').setOrigin(0,0);
         this.grasss.scale = 0.6
         this.colline=this.add.image(0,-50, 'colline').setOrigin(0,0);
         this.colline.scale = 0.5
-
-
-
-
-        //-------------ground premier plan---------------------------
-
-
-
-
         let bosse=this.add.image(-500,-170, 'bosse').setOrigin(0,0);
-
-
-
-
         let sol=this.add.image(-400,0, 'sol').setOrigin(0,0);
         let sol2=this.add.image(-800,0, 'sol').setOrigin(0,0);
 
 
+        //Arbres qui seront attribués aux touches
         this.tree1=this.add.image(-80,80, 'tree').setOrigin(0,0);
         this.tree1.scale = 0.3
         this.tree1.setVisible(false)
@@ -157,11 +130,6 @@ class Tableau1 extends Phaser.Scene{
         this.tree7=this.add.image(150,10, 'tree').setOrigin(0,0);
         this.tree7.scale = 0.5
         this.tree7.setVisible(false)
-
-
-
-
-
         this.bird = this.add.sprite(-50, -200, 'bird').setOrigin(0,0);
         this.anims.create({
             key: 'bird',
@@ -181,9 +149,6 @@ class Tableau1 extends Phaser.Scene{
             repeat: 0,
             flipX:false
         });
-
-
-
         this.arbremillieu=this.add.image(-20,-15, 'abmillieu').setOrigin(0,0);
         this.arbremillieu.scale = 0.5
 
@@ -196,10 +161,7 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-
-
-
-
+        //On créer le reste des animations
         this.snake = this.add.sprite(-380, 100, 'snake').setOrigin(0,0);
         this.anims.create({
             key: 'snake',
@@ -220,19 +182,6 @@ class Tableau1 extends Phaser.Scene{
             repeat: -1,
             flipX:true
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         this.male = this.add.sprite(-380, -140, 'male').setOrigin(0,0);
         this.anims.create({
@@ -267,7 +216,6 @@ class Tableau1 extends Phaser.Scene{
         this.fox.setVisible(false)
         this.fox.play('fox');
         this.fox.scale = 0.5
-        flipX:true
 
 
 
@@ -286,9 +234,16 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-
-
-
+        this.deer = this.add.sprite(-500, -200, 'deer1').setOrigin(0,0);
+        this.anims.create({
+            key: 'deer',
+            frames: this.getFrames('deer', 10),
+            frameRate: 7,
+            repeat: -1
+        });
+        this.deer.play('deer');
+        this.deer.scale = 1
+        this.deer.visible=false
 
 
 
@@ -327,18 +282,6 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         this.vulture = this.add.sprite(-40, -50, 'vulture').setOrigin(0,0);
         this.anims.create({
             key: 'vulture',
@@ -354,33 +297,20 @@ class Tableau1 extends Phaser.Scene{
 
 
 
-        this.deer = this.add.sprite(-500, -200, 'deer1').setOrigin(0,0);
-        this.anims.create({
-            key: 'deer',
-            frames: this.getFrames('deer', 10),
-            frameRate: 7,
-            repeat: -1
-        });
-        this.deer.play('deer');
-        this.deer.scale = 1
-        this.deer.visible=false
 
 
-
+        this.initKeyboard()
 
 
     }
-    getFrames(prefix,length){
-        let frames=[];
-        for (let i=1;i<=length;i++){
-            frames.push({key: prefix+i});
-        }
-        return frames;
+        getFrames(prefix,length){
+            let frames=[];
+            for (let i=1;i<=length;i++){
+                frames.push({key: prefix+i});
+            }
+            return frames;
     }
-    /**
-     *
-     *
-     */
+
     initKeyboard(){
         let me=this;
         this.input.keyboard.on('keydown', function(kevent)
@@ -388,10 +318,67 @@ class Tableau1 extends Phaser.Scene{
             switch (kevent.keyCode)
             {
                 case Phaser.Input.Keyboard.KeyCodes.A:
+                    me.tree1.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.Z:
+                    me.tree2.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.E:
+                    me.tree3.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.R:
+                    me.tree4.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.T:
+                    me.tree5.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.Y:
+                    me.tree6.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.U:
+                    me.tree7.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.I:
+                    me.sun.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.O:
+                    me.grey.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.P:
+                    me.cloud.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                    me.cloud2.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.S:
+                    me.snake.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.male.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.F:
+                    me.female.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.G:
+                    me.apple.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.H:
+                    me.rain.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.J:
+                    me.vulture.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.K:
                     me.deer.visible=true
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-2;
+                case Phaser.Input.Keyboard.KeyCodes.L:
+                    me.bird.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.M:
+                    me.fox.visible=true
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.W:
+                    me.sun.visible=false
                     break;
             }
         });
