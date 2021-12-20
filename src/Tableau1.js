@@ -30,7 +30,7 @@ class Tableau1 extends Phaser.Scene{
 
       // On charge les animations
         for(let i=1;i<=4;i++){
-            this.load.image('vulture'+i, 'assets/level/characters/vulture/idle-'+ i + '.png');
+            this.load.image('vulture'+i, 'assets/level/characters/Vulture/idle-'+ i + '.png');
         }
         for(let i=1;i<=3;i++){
             this.load.image('male'+i, 'assets/level/characters/c2/humain/male/h-'+ i + '.png');
